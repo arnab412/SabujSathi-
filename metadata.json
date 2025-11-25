@@ -1,0 +1,9 @@
+{
+  "name": "Sobuj Sathi - Gardening Assistant",
+  "description": "A Duolingo-style gardening assistant that identifies plants and provides care instructions in Bengali using Gemini.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

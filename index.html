@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobuj Sathi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                850: '#1f2937',
+                900: '#111827',
+                950: '#030712',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Baloo+Da+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scroll causing blank areas */
+      }
+      /* Bengali font override */
+      .bn-font {
+        font-family: 'Hind Siliguri', sans-serif;
+      }
+      /* Playful Bengali font */
+      .bn-playful {
+        font-family: 'Baloo Da 2', cursive;
+      }
+      /* Custom scrollbar for chat */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      .bg-dot-pattern {
+        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      .dark .bg-dot-pattern {
+        background-image: radial-gradient(#374151 1px, transparent 1px);
+      }
+      /* Animations */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+      }
+      .animate-wiggle {
+        animation: wiggle 2s ease-in-out infinite;
+      }
+      @keyframes pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+        100% { transform: scale(1); }
+      }
+      .animate-pop {
+        animation: pop 0.3s ease-in-out;
+      }
+      @keyframes slide-up {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slide-up {
+        animation: slide-up 0.5s ease-out forwards;
+      }
+      @keyframes fade-in-scale {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-fade-in-scale {
+        animation: fade-in-scale 0.4s ease-out forwards;
+      }
+      @keyframes scan {
+        0% { top: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+      .animate-scan {
+        animation: scan 2.5s linear infinite;
+      }
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 12s linear infinite;
+      }
+      /* Gradient Text Animation */
+      @keyframes gradient-x {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animate-gradient-x {
+        background-size: 200% auto;
+        animation: gradient-x 3s linear infinite;
+      }
+      /* Shimmer Effect */
+      @keyframes shimmer {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(200%); }
+      }
+
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+
+      /* New Animations for Impact Tracker */
+      @keyframes move-stripes {
+        0% { background-position: 0 0; }
+        100% { background-position: 30px 30px; }
+      }
+      .animate-stripes {
+        background-image: linear-gradient(
+          45deg, 
+          rgba(255, 255, 255, 0.2) 25%, 
+          transparent 25%, 
+          transparent 50%, 
+          rgba(255, 255, 255, 0.2) 50%, 
+          rgba(255, 255, 255, 0.2) 75%, 
+          transparent 75%, 
+          transparent
+        );
+        background-size: 30px 30px;
+        animation: move-stripes 1s linear infinite;
+      }
+      .ease-elastic {
+        transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      /* Tree Growth Animations */
+      @keyframes grow-bounce {
+        0% { transform: scale(0.8); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+      .animate-grow {
+        animation: grow-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .dark .glass-card {
+        background: rgba(17, 24, 39, 0.7);
+        border: 1px solid rgba(55, 65, 81, 0.5);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 bg-dot-pattern transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
